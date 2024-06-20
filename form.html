@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAFT YOUR UNIVERSITY JOURNEY</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.8;
+            }
+        }
+
+        h1 {
+            color: #d04ef6;
+            font-size: 28px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #0ff;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #0ff;
+            background: rgba(0, 255, 255, 0.1);
+            color: #0ff;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="number"]::placeholder,
+        input[type="email"]::placeholder {
+            color: #0ff;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(45deg, #00f, #0f0, #f00);
+            background-size: 200% 200%;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-position 0.5s, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        button[type="submit"]:hover {
+            background-position: right;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        button[type="submit"]:focus {
+            outline: none;
+        }
+
+        .cursor-trail {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #0ff;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease-out;
+            animation: cursorTrailAnim 0.5s infinite;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Add glow effect */
+        }
+
+        @keyframes cursorTrailAnim {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CRAFT YOUR UNIVERSITY JOURNEY</h1>
+        <form action="/predict" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="Your Name" required><br>
+            <label for="phone">Phone Number:</label><br>
+            <input type="text" id="phone" name="phone" placeholder="Your Phone Number" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="Your Email" required><br>
+            <label for="gre_score">Enter GRE Score:</label><br>
+            <input type="number" id="gre_score" name="gre_score" min="1" max="340" placeholder="1-340" required><br>
+            <label for="toefl_score">Enter TOEFL Score:</label><br>
+            <input type="number" id="toefl_score" name="toefl_score" min="1" max="120" placeholder="1-120" required><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="cursor-trail"></div>
+
+    <script>
+        document.addEventListener('mousemove', function (e) {
+            const cursorTrail = document.querySelector('.cursor-trail');
+            const xPos = e.clientX;
+            const yPos = e.clientY;
+            cursorTrail.style.left = xPos + 'px';
+            cursorTrail.style.top = yPos + 'px';
+        });
+    </script>
+</body>
+</html>

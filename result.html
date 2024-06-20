@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAFTED UNIVERSITIES</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.8;
+            }
+        }
+
+        h1 {
+            color: #0ff;
+            font-size: 28px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        h2 {
+            color: #77c107;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            color:white;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li:nth-child(even) {
+            background-color: rgba(0, 255, 255, 0.1);
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CRAFTED UNIVERSITIES</h1>
+        
+        <p>Predicted Chance of Admission: {{ chance_of_admit }}%</p>
+        <p><h2>Hey, {{ name }} here are the colleges you got</h2></p>
+        <ul>
+            {% for index, college in top_colleges.iterrows() %}
+                <li>{{ college['University'] }} - {{ college['Location'] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
