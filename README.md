@@ -1,5 +1,8 @@
 # usa-college-pridiction
 
+Add form.html and result.html in templaes folder
+
+
 Download Statements for Necessary Libraries
 Make sure you have the required libraries installed. You can use the following pip commands to install them:
 
